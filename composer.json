@@ -1,0 +1,44 @@
+{
+    "name": "voicene/app1",
+    "description": "A test application for interview",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "~2.0.5",
+        "yiisoft/yii2-bootstrap": "~2.0.0",
+		"bower-asset/angular": "~1.5.9",
+		"bower-asset/angular-route": "~1.5.9",
+		"bower-asset/angular-strap": "~2.3.6"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+    },
+    "config": {
+        "process-timeout": 1800
+    },
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ]
+    },
+    "extra": {
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "yii": "0755"
+                }
+            ],
+            "generateCookieValidationKey": [
+                "config/web.php"
+            ]
+        },
+        "asset-installer-paths": {
+            "npm-asset-library": "vendor/npm",
+            "bower-asset-library": "vendor/bower"
+        }
+    }
+}

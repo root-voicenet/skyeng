@@ -1,0 +1,46 @@
+
+<div class="row" ng-show="data.report">
+	<div class="col-md-12">
+		<form ng-submit="clear()" id="quiz-form" method="post" role="form">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Вы набрали:</p>
+					<h2>{{data.user_rate}} баллов</h2>
+				</div>
+				<div class="panel-footer text-right">
+					<button type="submit" class="btn btn-primary" name="contact-button">Начать заново</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>	
+<div class="row" ng-show="data.question">
+    <div class="col-md-12">
+		<form ng-submit="update()" id="question-form" method="post" role="form">
+			<div class="panel panel-default">
+				<div class="panel-header">Новое слово</div>
+				<div class="panel-body">
+					<p>Быстрее проверь свое знание языка</p>
+					<p>Слово</p>
+					<h3>{{data.question.message}}</h3>
+				
+					<p>Что это? Варианты перевода:</p>
+					<div ng-repeat="a in data.answers" class="row-fluid">
+						<label>
+							<input type="radio" name="meaningless" ng-model="quizModel.answer" value="{{a}}" />
+							<span ng-bind="a"></span>
+						</label>
+					</div>
+					
+					<div class="alert alert-warning" ng-show="data.error">
+						<p>Ошибка</p>
+						<p>Правильный перевод: {{data.answer}}</p>
+					</div>
+				</div>
+				<div class="panel-footer text-right">
+						 <button type="submit" class="btn btn-primary" name="contact-button">Далее</button>
+				</div>
+			</div>	
+		</form>
+	</div>
+</div>
